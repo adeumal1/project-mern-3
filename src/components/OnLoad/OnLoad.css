@@ -1,0 +1,9 @@
+img { 
+  height: 100px;
+}
+
+.full-onload {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+}

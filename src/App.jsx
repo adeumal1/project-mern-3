@@ -1,34 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { lazy } from "react";
+import { Route, Routes, Link } from "react-router-dom";
+import "./App.css";
+
+import OnLoad from './components/OnLoad/OnLoad'
+const HomePage = lazy(() => import("./pages/HomePage"));
+const TicTacToePage = lazy(() => import("./pages/TicTacToePage"));
+const HangmanPage = lazy(() => import("./pages/HangmanPage"));
+const SudokuPage = lazy(() => import("./pages/SudokuPage"));
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <Link to="/">Home</Link>
+      <Link to="/tictactoe">TicTacToe</Link>
+      <Link to="/hangman">Hangman</Link>
+      <Link to="/sudoku">Sudoku</Link>
+      <Routes>
+        <Route path="/" element={
+            <React.Suspense fallback={<OnLoad />}>
+              <HomePage />
+            </React.Suspense>
+          }
+        />
+        <Route path="/tictactoe" element={
+            <React.Suspense fallback={<OnLoad />}>
+              <TicTacToePage />
+            </React.Suspense>
+          }
+        />
+        <Route path="/hangman" element={
+            <React.Suspense fallback={<OnLoad />}>
+              <HangmanPage />
+            </React.Suspense>
+          }
+        />
+        <Route path="/sudoku" element={
+            <React.Suspense fallback={<OnLoad />}>
+              <SudokuPage />
+            </React.Suspense>
+          }
+        />
+      </Routes>
+    </div>
+    
   )
 }
 
