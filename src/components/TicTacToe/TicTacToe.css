@@ -1,0 +1,40 @@
+.container-tictactoe {
+  color: #fff;
+}
+
+.table-tictactoe {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 5px;
+  margin: 50px auto;
+  width: 320px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #333;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.winner-container {
+  position: absolute;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 250px;
+  background-color: #fff;
+  border: red solid 3px;
+  color: #333;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
