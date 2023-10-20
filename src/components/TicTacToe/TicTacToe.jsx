@@ -8,6 +8,7 @@ const TicTacToe = () => {
   const [winner, setWinner] = useState(null);
   const [classHiddenVisibleDiv, setClassHiddenVisibleDiv] = useState("hidden");
   const [classHiddenVisibleP, setClassHiddenVisibleP] = useState("visible");
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
 
   const winCombos = [
     [0, 1, 2],[3, 4, 5],[6, 7, 8], // Rows
@@ -22,6 +23,7 @@ const TicTacToe = () => {
     setWinner(null);
     setClassHiddenVisibleDiv("hidden");
     setClassHiddenVisibleP("visible");
+    setButtonDisabled(false);
   };
 
   const handlePlay = (index) => {
@@ -43,6 +45,7 @@ const TicTacToe = () => {
         setWinner(cells[a]);
         setClassHiddenVisibleDiv("visible");
         setClassHiddenVisibleP("hidden");
+        setButtonDisabled(!isButtonDisabled);
       }
     }
   }, [cells]);
@@ -59,6 +62,7 @@ const TicTacToe = () => {
               <button
                 key={index}
                 className="cell"
+                disabled={isButtonDisabled}
                 data-cell={index + 1}
                 onClick={() => handlePlay(index)}
               >
