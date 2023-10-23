@@ -1,0 +1,11 @@
+.container-hangman {
+  color: white;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden { 
+  visibility: disabled;
+}
