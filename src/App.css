@@ -4,3 +4,81 @@
   justify-content: center;
   text-align: center;
 }
+
+.logo-container {
+  width: 100%;
+}
+
+.logo-container img {
+  width: 65%;
+  height: auto;
+}
+
+#go-home-button {
+  position: fixed;
+  top: 20px; 
+  left: 20px; 
+  color: #fff; 
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.container-games {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px; 
+}
+
+.game {
+  height: 80px;
+  padding: 10px;
+  text-align: left;
+  border-top-right-radius: 90px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 75px;
+  border-bottom-right-radius: 30px;
+  border:7px solid grey ;
+}
+
+.t {
+  background: url("./assets/img/tictactoexxo.png");
+}
+
+.h {
+  background: url("./assets/img//hangman.jpg");
+  background-position: center;
+}
+
+.s {
+  background: url("./assets/img/sudoku.png");
+  background-position: center;
+}
+
+.f {
+  background: linear-gradient(orange, orange, orange, orangered);
+}
+
+.game a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 30px;
+}
+
+@media (max-width: 1000px) {
+  .container-games {
+    grid-template-columns: 1fr;
+  }
+}
+
+.play-button, .pause-button {
+  background-color: transparent;
+  border: none;
+}
+
+.play-button img{
+  width: 300px;
+  height: 300px;
+}

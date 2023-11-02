@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./TicTacToe.css";
+import play from "../../assets/img/play.svg";
+import pause from "../../assets/img/pause.svg";
 
 const TicTacToe = () => {
   const [isStarted, setIsStarted] = useState(false);
@@ -34,29 +36,42 @@ const TicTacToe = () => {
       setButtonText(buttonText === "✖️" ? "⭕" : "✖️");
     }
   };
+  
+  const draw = (arr) => {
+    return arr.every(item => typeof item === 'string' && item.trim() !== '');
+  };
 
   useEffect(() => {
     // console.log('cells is changing');
     // console.log(cells);
-    for (let i = 0; i < winCombos.length; i++) {
-      const [a, b, c] = winCombos[i];
-      console.log(cells[a], cells[b], cells[c]);
-      if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
-        setWinner(cells[a]);
-        setClassHiddenVisibleDiv("visible");
-        setClassHiddenVisibleP("hidden");
-        setButtonDisabled(!isButtonDisabled);
+    if (!draw(cells)) {
+      for (let i = 0; i < winCombos.length; i++) {
+        const [a, b, c] = winCombos[i];
+        // console.log(cells[a], cells[b], cells[c]);
+        if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+          setWinner("The winnner is "+cells[a]);
+          setClassHiddenVisibleDiv("visible");
+          setClassHiddenVisibleP("hidden");
+          setButtonDisabled(!isButtonDisabled);
+        }
       }
+    } else {
+      setWinner("Draw");
+      setClassHiddenVisibleDiv("visible");
+      setClassHiddenVisibleP("hidden");
+      setButtonDisabled(!isButtonDisabled);
     }
   }, [cells]);
 
   return (
     <div className="container-tictactoe">
-      <h1>Tic Tac Toe</h1>
-      <button onClick={handleStart}>{isStarted ? "Restart" : "Start"}</button>
-      <p className={classHiddenVisibleP}>{isStarted ? "Turn for " + buttonText : ""}</p>
+      <button className="play-button" onClick={handleStart}>{isStarted ? "" : <img src={play} alt="" />}</button>
       {isStarted ? (
-        <div>
+        <div className="container-tictactoe-2">
+          <p className={classHiddenVisibleP}>{isStarted ? "Turn for " + buttonText : ""}</p>
+          <div className={"winner-container " + classHiddenVisibleDiv}>
+            <h2>{winner}</h2>
+          </div>
           <div className="table-tictactoe">
             {cells.map((value, index) => (
               <button
@@ -70,13 +85,11 @@ const TicTacToe = () => {
               </button>
             ))}
           </div>
-          <div className={"winner-container " + classHiddenVisibleDiv}>
-            <h2>The winner is {winner}</h2>
-          </div>
+          <button className="pause-button" onClick={handleStart}>{isStarted ? <img src={pause} alt="" /> : ""}</button>
         </div>
       ) : (
         <div>
-          <h1>PRESS START</h1>
+           <h1>Tic Tac Toe</h1>
         </div>
       )}
     </div>
