@@ -44,22 +44,21 @@ const TicTacToe = () => {
   useEffect(() => {
     // console.log('cells is changing');
     // console.log(cells);
-    if (!draw(cells)) {
-      for (let i = 0; i < winCombos.length; i++) {
-        const [a, b, c] = winCombos[i];
-        // console.log(cells[a], cells[b], cells[c]);
-        if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
-          setWinner("The winnner is "+cells[a]);
-          setClassHiddenVisibleDiv("visible");
-          setClassHiddenVisibleP("hidden");
-          setButtonDisabled(!isButtonDisabled);
-        }
-      }
-    } else {
+    if (draw(cells)) {
       setWinner("Draw");
       setClassHiddenVisibleDiv("visible");
       setClassHiddenVisibleP("hidden");
       setButtonDisabled(!isButtonDisabled);
+    } 
+    for (let i = 0; i < winCombos.length; i++) {
+      const [a, b, c] = winCombos[i];
+      // console.log(cells[a], cells[b], cells[c]);
+      if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+        setWinner("The winnner is "+cells[a]);
+        setClassHiddenVisibleDiv("visible");
+        setClassHiddenVisibleP("hidden");
+        setButtonDisabled(!isButtonDisabled);
+      }
     }
   }, [cells]);
 
