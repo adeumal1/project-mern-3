@@ -18,6 +18,7 @@
 
 .table-tictactoe {
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(3, 100px);
   grid-gap: 5px;
   margin: 50px auto;

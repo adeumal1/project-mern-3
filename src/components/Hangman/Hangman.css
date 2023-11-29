@@ -57,7 +57,7 @@ button[disabled] {
 
 .winner-container {
   position: absolute;
-  top: 800px;
+  top: 50vh;
   left: 0; 
   right: 0; 
   margin-left: auto; 
@@ -81,4 +81,26 @@ button[disabled] {
 
 .visible {
   visibility: visible;
+}
+
+@media (max-width: 800px) {
+  .block-divider {
+    flex-direction: column;
+  }
+
+  .buttons-container button{
+    height: 50px;
+    width: 50px;
+   
+  }
+}
+
+@media (max-width: 500px) {
+  .block-1 {
+    font-size: 21px;
+  }
+
+  .block-2 img{
+    height: 150px;
+  }
 }

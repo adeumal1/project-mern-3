@@ -9,6 +9,8 @@ const Sudoku = () => {
   const [sudokuBoard, setSudokuBoard] = useState(null);
   const [solved, setSolved ]= useState(null);
   const [selectedButton, setSelectedButton] = useState(null);
+  const [classHiddenVisibleDiv, setClassHiddenVisibleDiv] = useState("hidden");
+  const [solvedYN, setSolvedYN] = useState(false);
   const numbersArray = Array.from(Array(9).keys()).map((x) => x + 1);
   
 
@@ -27,6 +29,7 @@ const Sudoku = () => {
   const handleStart = () => {
     if (!isStarted) {
       setSelectedButton(null);
+      setClassHiddenVisibleDiv("hidden", null)
     }
     setIsStarted(!isStarted);
   };
@@ -50,14 +53,17 @@ const Sudoku = () => {
   };
 
   const checkWin = () => {
-  
+    setClassHiddenVisibleDiv('visible');
     if (JSON.stringify(sudokuBoard) === JSON.stringify(solved)) {
-      console.log("Son iguales!");
+      setSolvedYN(true)
     } else {
-      console.log('No son iguales.');
+      setSolvedYN(false)
     }
   };
 
+  const continuePuzzle = () => {
+    setClassHiddenVisibleDiv('hidden');
+  }
   return (
     <div className="container-sudoku">
       <button className="play-button" onClick={handleStart}>
@@ -77,9 +83,13 @@ const Sudoku = () => {
               </button>
             ))}
           </div>
+          <div className={'winner-container ' + classHiddenVisibleDiv}>
+            {solvedYN ? <span>✅</span> : <><span>❌</span><button className="tryagain" onClick={continuePuzzle}>Continue</button></>}
+              
+          </div>
           <div className="board">
             {sudokuBoard.map((number, index) => (
-              <button key={index} className={number === null ? "cell2" : "cell2 defaultnumber"} value={index} onClick={updateBaord}>{number}</button>
+              <button key={index} className={"cell2"} value={index} onClick={updateBaord}>{number}</button>
              ))}
           </div>
           <button className="win-button" onClick={checkWin}>check solution</button>

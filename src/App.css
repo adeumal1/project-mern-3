@@ -82,3 +82,40 @@
   width: 300px;
   height: 300px;
 }
+
+@media (max-width: 700px) {
+  #go-home-button {
+    top: 20px; 
+    left: 1px; 
+    height: 10px;
+    width: 10px;
+  }
+
+  #go-home-button img {
+    height: 50px ;
+  }
+}
+
+@media (max-width: 450px) {
+  #go-home-button {
+    top: 10px; 
+    left: 1px; 
+    height: 10px;
+    width: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  #go-home-button {
+    top: 10px; 
+    left: 1px; 
+    height: 10px;
+    width: 10px;
+  }
+
+  .play-button img{
+    width: 200px;
+    height: 200px;
+  }
+
+}
