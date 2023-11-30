@@ -18,10 +18,12 @@ const TicTacToe = () => {
     [0, 4, 8],[2, 4, 6], // Diagonals
   ];
 
+  const randomPlayer = () => Math.random() < 0.5 ? "✖️" : "⭕";
+
   const handleStart = () => {
     setIsStarted(!isStarted);
     setCells(Array(9).fill(null));
-    setButtonText("✖️");
+    setButtonText(randomPlayer());
     setWinner(null);
     setClassHiddenVisibleDiv("hidden");
     setClassHiddenVisibleP("visible");
